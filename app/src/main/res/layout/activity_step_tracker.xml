@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/trackerRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_tracker_gradient"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    tools:context=".StepTrackerActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_tracker_card"
+                android:contentDescription="@string/app_name"
+                android:padding="10dp"
+                android:src="@android:drawable/ic_media_previous"
+                android:tint="@color/tracker_primary_text" />
+
+            <ImageView
+                android:id="@+id/ivAppLogo"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_fitness_logo" />
+
+            <TextView
+                android:id="@+id/tvDateTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:textColor="@color/tracker_primary_text"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Today, 21 Apr 2026" />
+
+            <ImageButton
+                android:id="@+id/btnCalendar"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_tracker_card"
+                android:contentDescription="@string/calendar_action"
+                android:padding="10dp"
+                android:src="@android:drawable/ic_menu_my_calendar"
+                android:tint="@color/tracker_primary_text" />
+
+            <ImageButton
+                android:id="@+id/btnShare"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_tracker_card"
+                android:contentDescription="@string/share_action"
+                android:padding="10dp"
+                android:src="@android:drawable/ic_menu_share"
+                android:tint="@color/tracker_primary_text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dayChipRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDayMon"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_day_unselected"
+                android:gravity="center"
+                android:text="M"
+                android:textColor="@color/tracker_secondary_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDayTue"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_day_unselected"
+                android:gravity="center"
+                android:text="T"
+                android:textColor="@color/tracker_secondary_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDayWed"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_day_unselected"
+                android:gravity="center"
+                android:text="W"
+                android:textColor="@color/tracker_secondary_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDayThu"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_day_unselected"
+                android:gravity="center"
+                android:text="T"
+                android:textColor="@color/tracker_secondary_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDayFri"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_day_unselected"
+                android:gravity="center"
+                android:text="F"
+                android:textColor="@color/tracker_secondary_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDaySat"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_day_unselected"
+                android:gravity="center"
+                android:text="S"
+                android:textColor="@color/tracker_secondary_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDaySun"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_day_unselected"
+                android:gravity="center"
+                android:text="S"
+                android:textColor="@color/tracker_secondary_text"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardHero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_tracker_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvMoveLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/momentum_title"
+                android:textColor="@color/tracker_primary_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/momentum_subtitle"
+                android:textColor="@color/tracker_secondary_text"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvMoveValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/tracker_accent"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:text="147 kcal today" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvGoalLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_tracker_day_unselected"
+                    android:paddingStart="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/goal_progress_label"
+                    android:textColor="@color/tracker_primary_text"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGoalProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/tracker_secondary_text"
+                    android:textSize="13sp"
+                    tools:text="36% complete" />
+            </LinearLayout>
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressDailyGoal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="8dp"
+                android:max="100"
+                app:indicatorColor="@color/tracker_accent_alt"
+                app:trackColor="@color/tracker_progress_track"
+                app:trackCornerRadius="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnQuickAdd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/quick_add_action"
+                    app:backgroundTint="@color/tracker_accent"
+                    app:cornerRadius="14dp"
+                    app:icon="@android:drawable/ic_input_add" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnQuickRemove"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/quick_remove_action"
+                    android:textColor="@color/tracker_primary_text"
+                    app:backgroundTint="@color/tracker_chip_bg"
+                    app:cornerRadius="14dp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStartWalk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/start_walk"
+                android:textColor="@color/tracker_primary_text"
+                app:backgroundTint="@color/tracker_chip_bg"
+                app:cornerRadius="14dp"
+                app:icon="@android:drawable/ic_media_play" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardStepRing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_tracker_card"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/live_ring_title"
+                android:textColor="@color/tracker_primary_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_marginTop="10dp"
+                android:foregroundGravity="center">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progressStepRing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:indeterminate="false"
+                    android:max="10000"
+                    android:progress="0"
+                    app:indicatorColor="@color/tracker_accent_alt"
+                    app:indicatorSize="170dp"
+                    app:trackThickness="14dp"
+                    app:trackColor="@color/tracker_progress_track" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvRingSteps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/tracker_primary_text"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        tools:text="3,656" />
+
+                    <TextView
+                        android:id="@+id/tvRingMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/tracker_secondary_text"
+                        android:textSize="13sp"
+                        tools:text="Walking" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvRingGoalHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/live_ring_goal_hint"
+                android:textColor="@color/tracker_secondary_text"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/cardSteps"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_card"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvStepsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/metric_steps"
+                    android:textColor="@color/tracker_secondary_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvStepCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/tracker_primary_text"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:text="3656" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardDistance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_card"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvDistanceLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/metric_distance"
+                    android:textColor="@color/tracker_secondary_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/tracker_primary_text"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:text="2.66 km" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/cardActive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_card"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvActiveLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/metric_active"
+                    android:textColor="@color/tracker_secondary_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvActiveCalories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/tracker_primary_text"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:text="147" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardMode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tracker_card"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/tvModeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/metric_status"
+                    android:textColor="@color/tracker_secondary_text"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvMode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/tracker_success"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    tools:text="Walking" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardUnique"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_tracker_card"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/adaptive_coach_title"
+                android:textColor="@color/tracker_primary_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAdaptiveCoach"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/coach_suggestion_default"
+                android:textColor="@color/tracker_secondary_text"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMoodCalm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/mood_calm"
+                    android:textColor="@color/tracker_primary_text"
+                    app:backgroundTint="@color/tracker_chip_bg"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMoodFocus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/mood_focus"
+                    android:textColor="@color/tracker_primary_text"
+                    app:backgroundTint="@color/tracker_chip_bg"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMoodStress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="@string/mood_stress"
+                    android:textColor="@color/tracker_primary_text"
+                    app:backgroundTint="@color/tracker_chip_bg"
+                    app:cornerRadius="14dp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMoodLow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/mood_low"
+                android:textColor="@color/tracker_primary_text"
+                app:backgroundTint="@color/tracker_chip_bg"
+                app:cornerRadius="14dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recovery_flux_title"
+                        android:textColor="@color/tracker_secondary_text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvRecoveryScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/tracker_primary_text"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="78 / 100" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/eco_impact_title"
+                        android:textColor="@color/tracker_secondary_text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvEcoImpact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/tracker_primary_text"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="320.5 g CO2 saved" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hydration_title"
+                        android:textColor="@color/tracker_secondary_text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvHydrationValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/tracker_primary_text"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="750 ml" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRemoveWater"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/remove_water"
+                        android:textColor="@color/tracker_primary_text"
+                        app:backgroundTint="@color/tracker_chip_bg"
+                        app:cornerRadius="12dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddWater"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="@string/add_water"
+                        app:backgroundTint="@color/tracker_accent_alt"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardTimeline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_tracker_card"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/timeline_title"
+                android:textColor="@color/tracker_primary_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvChartTopValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/tracker_secondary_text"
+                android:textSize="13sp"
+                tools:text="Peak: 39 CAL" />
+
+            <LinearLayout
+                android:id="@+id/chartBars"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:gravity="bottom"
+                android:orientation="horizontal" />
+
+            <TextView
+                android:id="@+id/tvTotalCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/tracker_primary_text"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="Total 1331 CAL" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardActions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_tracker_card"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quick_actions_title"
+                android:textColor="@color/tracker_primary_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStartRun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/start_run"
+                app:backgroundTint="@color/tracker_accent_alt"
+                app:cornerRadius="14dp"
+                app:icon="@android:drawable/ic_media_play" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFindRoute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/route_search_action"
+                android:textColor="@color/tracker_primary_text"
+                app:backgroundTint="@color/tracker_chip_bg"
+                app:cornerRadius="14dp"
+                app:icon="@android:drawable/ic_dialog_map" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOpenFitness"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/open_fitness_plus"
+                    android:textColor="@color/tracker_primary_text"
+                    app:backgroundTint="@color/tracker_chip_bg"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOpenSharing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:text="@string/open_sharing_center"
+                    android:textColor="@color/tracker_primary_text"
+                    app:backgroundTint="@color/tracker_chip_bg"
+                    app:cornerRadius="14dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/tracker_secondary_text"
+            android:textSize="13sp"
+            tools:text="Tracking active" />
+
+        <LinearLayout
+            android:id="@+id/cardBmiTracker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_tracker_card"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tracker_bmi_title"
+                android:textColor="@color/tracker_primary_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/tracker_bmi_subtitle"
+                android:textColor="@color/tracker_secondary_text"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/tracker_bmi_weight_hint"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/tracker_accent_alt"
+                app:hintTextColor="@color/tracker_secondary_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/bmiWeightInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"
+                    android:textColor="@color/tracker_primary_text"
+                    android:textColorHint="@color/tracker_secondary_text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:hint="@string/tracker_bmi_feet_hint"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/tracker_accent_alt"
+                    app:hintTextColor="@color/tracker_secondary_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/bmiFeetInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textColor="@color/tracker_primary_text"
+                        android:textColorHint="@color/tracker_secondary_text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:hint="@string/tracker_bmi_inches_hint"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/tracker_accent_alt"
+                    app:hintTextColor="@color/tracker_secondary_text">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/bmiInchesInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textColor="@color/tracker_primary_text"
+                        android:textColorHint="@color/tracker_secondary_text" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCalculateBmiTracker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/tracker_bmi_calculate"
+                app:backgroundTint="@color/tracker_accent_alt"
+                app:cornerRadius="14dp" />
+
+            <TextView
+                android:id="@+id/tvBmiResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/tracker_bmi_result_placeholder"
+                android:textColor="@color/tracker_primary_text"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

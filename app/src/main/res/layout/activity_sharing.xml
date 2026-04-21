@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_tracker_gradient">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <ImageButton
+            android:id="@+id/btnBackSharing"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_tracker_card"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_media_previous"
+            android:tint="@color/tracker_primary_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/sharing_title"
+            android:textColor="@color/tracker_primary_text"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/sharing_subtitle"
+            android:textColor="@color/tracker_secondary_text"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnShareProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/share_progress"
+            app:backgroundTint="@color/tracker_accent"
+            app:cornerRadius="14dp"
+            app:icon="@android:drawable/ic_menu_share" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnInviteSms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/invite_sms"
+            android:textColor="@color/tracker_primary_text"
+            app:backgroundTint="@color/tracker_chip_bg"
+            app:cornerRadius="14dp"
+            app:icon="@android:drawable/ic_dialog_email" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCopyStats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/copy_stats"
+            android:textColor="@color/tracker_primary_text"
+            app:backgroundTint="@color/tracker_chip_bg"
+            app:cornerRadius="14dp"
+            app:icon="@android:drawable/ic_menu_save" />
+    </LinearLayout>
+</ScrollView>

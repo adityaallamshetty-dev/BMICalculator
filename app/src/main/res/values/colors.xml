@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="coloreh">#79AF7A</color>
-    <color name="coloreuw">#801313</color>
-    <color name="coloreow">#625C27</color>
+    <color name="white">#FFFFFFFF</color>
 
+    <color name="primary">#0D6EFD</color>
+    <color name="primary_dark">#0A58CA</color>
+    <color name="secondary">#20C997</color>
+    <color name="surface">#F4F7FB</color>
+    <color name="surface_card">#FFFFFFFF</color>
+    <color name="text_primary">#1F2937</color>
+    <color name="text_secondary">#6B7280</color>
+
+    <color name="coloreh">#D9F2E3</color>
+    <color name="coloreuw">#F8D7DA</color>
+    <color name="coloreow">#FFF3CD</color>
+    <color name="bmi_healthy_text">#0F5132</color>
+    <color name="bmi_under_text">#664D03</color>
+    <color name="bmi_over_text">#842029</color>
+
+    <color name="tracker_bg_top">#F4FAFF</color>
+    <color name="tracker_bg_bottom">#FFF5E9</color>
+    <color name="tracker_card">#FFFFFFFF</color>
+    <color name="tracker_primary_text">#17324A</color>
+    <color name="tracker_secondary_text">#6B8298</color>
+    <color name="tracker_accent">#FF7A59</color>
+    <color name="tracker_accent_alt">#1BB2C8</color>
+    <color name="tracker_success">#22A06B</color>
+    <color name="tracker_progress_track">#E5EEF6</color>
+    <color name="tracker_chip_bg">#EAF1F8</color>
 </resources>

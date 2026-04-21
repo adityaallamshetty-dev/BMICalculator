@@ -1,16 +1,18 @@
 package com.example.bmicalculator;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.button.MaterialButton;
 
 public class MainActivity2 extends AppCompatActivity {
+
+    private static final String DOCTOR_PHONE = "9686729490";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,18 +20,16 @@ public class MainActivity2 extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main2);
 
-        Button btncall = findViewById(R.id.btncall);
+        MaterialButton btnCall = findViewById(R.id.btncall);
+        btnCall.setOnClickListener(view -> {
+            Intent dialIntent = new Intent(Intent.ACTION_DIAL);
+            dialIntent.setData(Uri.parse("tel:" + DOCTOR_PHONE));
 
-
-        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
-
-
-
-        btncall.setOnClickListener(view -> {
-            startActivity(intent);
+            if (dialIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(dialIntent);
+            } else {
+                Toast.makeText(this, "No phone app found on this device.", Toast.LENGTH_SHORT).show();
+            }
         });
-
-
-
     }
 }
